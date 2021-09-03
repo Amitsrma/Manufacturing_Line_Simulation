@@ -4,7 +4,9 @@ from typing import Tuple
 
 
 class Line:
-    def __init__(self, identifier: str, delay_distribution: Tuple):
+    def __init__(self, identifier: str,
+                 delay_distribution: Tuple[int, int, int]
+                ):
         self.identifier = identifier
         self.num_current_parts = 0
         self.parts_queue = deque()

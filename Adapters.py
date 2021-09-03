@@ -1,6 +1,6 @@
 from collections import deque
 from Part import Part
-from WorkLine import Line
+from ConveyorLine import Line
 
 
 class LinePartReleaseQueue(Part, Line):
