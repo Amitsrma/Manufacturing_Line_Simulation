@@ -3,7 +3,7 @@ from Pallet import Pallet
 
 
 class PalletManager:
-    def __init__(self, total_pallets: int) -> None:
+    def __init__(self, total_pallets: int):
         self.total_pallets = total_pallets
         self.free_pallets = 0
         self.free_pallet_queue = deque()
