@@ -10,3 +10,4 @@ class Workcell:
             self.time_to_switch = MANUAL_WORKCELL_SETUP_TIMES.get(cell_number)
         else:
             self.time_to_switch = WORKCELL_SETUP_TIMES.get(cell_number)
+        self.is_processing = False
