@@ -1,5 +1,5 @@
 from collections import deque
-from Part import Part
+from Entities.Part import Part
 from typing import Tuple
 
 

@@ -1,5 +1,5 @@
 from collections import deque
-from Pallet import Pallet
+from Entities.Pallet import Pallet
 
 
 class PalletManager:
