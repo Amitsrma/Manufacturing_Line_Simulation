@@ -4,7 +4,8 @@ from EntityManagers import PalletManager
 
 def run_system(duration: int = 1):
     """
-    Executes the logic of system, saves the state of system as it 
+    Executes the logic of system, saves the state of system as is for
+    further operation.
 
     params:
         duration (int): This the number of weeks system is supposed to run
