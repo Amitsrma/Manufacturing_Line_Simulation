@@ -1,4 +1,4 @@
-from Part import Part
+from Entities.Part import Part
 
 
 class Pallet:
