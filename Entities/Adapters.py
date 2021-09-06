@@ -15,4 +15,3 @@ class LinePartReleaseQueue(Part, Line):
     
     def get_part(self) -> Part:
         return self.fifo_part_queue.popleft()
-

@@ -1,3 +1,6 @@
+# Allowed keys for part generator
+ALLOWED_KEYS = ["interval_A", "interval_B", "interval_C"]
+
 # Manual cell numbers
 MANUAL_CELLS = (2, 7)
 
