@@ -1,6 +1,7 @@
-from data_store import DELAY_PERCENTAGE
+from data_store import DELAY_DISTRIBUTION, DELAY_PERCENTAGE, INTERVALS
+from Entities.Part import Part
 import random
-from typing import Tuple
+from typing import List, Tuple
 
 
 def wait_time_from_triangle_distribution(distribution: Tuple[int, int, int]) -> int:
@@ -26,7 +27,7 @@ def wait(start_time: int, wait_interval: int):
     raise NotImplementedError
 
 
-def is_delay(part_type: str) -> bool:
+def is_delay(part_types: List[str]) -> bool:
     """
     For a given part type, returns if there will be delay.
 
@@ -35,7 +36,22 @@ def is_delay(part_type: str) -> bool:
 
     returns: bool
     """
-    delay_threshold = DELAY_PERCENTAGE.get(part_type)
-    if random.random() < delay_threshold:
-        return True
-    return False
+    delays = []
+    for a_part_type in part_types:
+        delay_threshold = DELAY_PERCENTAGE.get(a_part_type)
+        if random.random() < delay_threshold:
+            delayed_by = wait_time_from_triangle_distribution(
+                distribution=DELAY_DISTRIBUTION.get(a_part_type)
+                )
+            delays.append((True, delayed_by))
+        else:
+            delays.append(False, 0)
+    return delays
+
+
+def get_part(part_type: str):
+    return Part(
+        part_type=part_type,
+        arrival_time_interval=INTERVALS.get(part_type),
+        delay_percentage=DELAY_PERCENTAGE.get(part_type)
+    )

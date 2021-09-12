@@ -8,6 +8,20 @@ DELAY_PERCENTAGE = {
     "C": 0.5/100
 }
 
+# Triangular distribution of delay, in seconds
+DELAY_DISTRIBUTION = {
+    "A": (5, 15, 60),
+    "B": (5, 20, 55),
+    "C": (5, 20, 65)
+}
+
+# Intervals for different parts, in seconds
+INTERVALS = {
+    "A": 2.8 * 60,
+    "B": 1.4 * 60,
+    "C": 2.0 * 60
+}
+
 # Manual cell numbers
 MANUAL_CELLS = (2, 7)
 

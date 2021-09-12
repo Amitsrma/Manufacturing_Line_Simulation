@@ -1,5 +1,6 @@
+from data_store import INTERVALS
 from Entities.Part import Part
-from EntityManagers import PalletManager
+from EntityManagers import PalletManager, PartGenerators
 
 
 def run_system(duration: int = 1):
@@ -14,6 +15,12 @@ def run_system(duration: int = 1):
     returns: None
     """
     duration_in_seconds = duration * 5 * 16 * 3600  # convert duration to sec
+    part_generator = PartGenerators(
+        interval_A=INTERVALS.get("A"),
+        interval_B=INTERVALS.get("B"),
+        interval_C=INTERVALS.get("C")
+    )
+
     while duration_in_seconds >= 0:
         
         duration_in_seconds -= 1
