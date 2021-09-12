@@ -1,3 +1,4 @@
+from data_store import DELAY_PERCENTAGE
 import random
 from typing import Tuple
 
@@ -25,5 +26,16 @@ def wait(start_time: int, wait_interval: int):
     raise NotImplementedError
 
 
-def is_delay():
-    raise NotImplementedError
+def is_delay(part_type: str) -> bool:
+    """
+    For a given part type, returns if there will be delay.
+
+    Params:
+        part_type: a string that denotes the type of part
+
+    returns: bool
+    """
+    delay_threshold = DELAY_PERCENTAGE.get(part_type)
+    if random.random() < delay_threshold:
+        return True
+    return False

@@ -23,4 +23,4 @@ class PartGenerator:
         self.__delays = [(False, 0)] * 3
 
     def get_parts(self, current_time: int):
-        pass
+        raise NotImplementedError
