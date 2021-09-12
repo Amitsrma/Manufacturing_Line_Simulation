@@ -1,6 +1,13 @@
 # Allowed keys for part generator
 ALLOWED_KEYS = ["interval_A", "interval_B", "interval_C"]
 
+# Percentage of times Delays happen
+DELAY_PERCENTAGE = {
+    "A": 2/100,
+    "B": 1.75/100,
+    "C": 0.5/100
+}
+
 # Manual cell numbers
 MANUAL_CELLS = (2, 7)
 

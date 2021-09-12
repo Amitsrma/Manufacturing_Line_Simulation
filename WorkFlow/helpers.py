@@ -21,5 +21,9 @@ def wait(start_time: int, wait_interval: int):
     individual entities are processing/working/blocking the
     system.
     """
-    # TODO identify if synchronous/asynchronous solution would suffice here
+    # TODO identify if synchronous/asynchronous solution would work here
+    raise NotImplementedError
+
+
+def is_delay():
     raise NotImplementedError
