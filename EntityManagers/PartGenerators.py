@@ -1,5 +1,5 @@
 import random
-from data_store import 
+from data_store import DELAY_PERCENTAGE
 from Entities.Part import Part
 from data_store import ALLOWED_KEYS
 

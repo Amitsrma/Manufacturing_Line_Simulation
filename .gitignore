@@ -140,3 +140,4 @@ cython_debug/
 # Misc
 Prob_State/
 .VSCodeCounter/
+.vscode*/*
