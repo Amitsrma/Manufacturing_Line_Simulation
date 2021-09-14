@@ -1,5 +1,5 @@
+from typing import List
 from WorkFlow.helpers import is_delay, get_part
-import random
 from data_store import DELAY_PERCENTAGE
 from Entities.Part import Part
 from data_store import ALLOWED_KEYS
@@ -14,22 +14,29 @@ class PartGenerator:
         interval_A, interval_B, interval_C
     intervals are passed in minutes
     """
-    def __init__(self, interval_A: int,
-                 interval_B: int, interval_C: int):
+    def __init__(self, part_A: Part,
+                 part_B: Part, part_C: Part):
         self.parts = ["A", "B", "C"]
         self.intervals = [
-            interval_A * 60,
-            interval_B * 60,
-            interval_C * 60
+            part_A.arrival_time_interval * 60,
+            part_B.arrival_time_interval * 60,
+            part_C.arrival_time_interval * 60
         ]
         self.start_time = 0
         self.__last_release_time_point = [0] * 3
         self.__delays = [(False, 0)] * 3
 
-    def get_parts(self, current_time: int):
-        are_parts_delayed = is_delay(self.parts)
+    def get_parts(self, current_time: int) -> List[Part]:
+        generated_parts = []
         for index, a_part_type in enumerate(self.parts):
-            part_release_point = self.__last_release_time_point[0] + self.interval_A
+            part_release_point = self.__last_release_time_point[0] + self.intervals[index]
+            if not self.__delays[index][0]:  # delay has not occured
+                self.__delays[index] = is_delay(part_type=a_part_type)
+            part_release_point += self.__delays[index][1]
             if part_release_point >= current_time:
                 self.__last_release_time_point[0] = part_release_point
-                yield get_part(a_part_type)
+                self.__delays[index] = (False, 0)
+                generated_parts.append(get_part(a_part_type))
+            else:
+                generated_parts.append(None)
+        return generated_parts

@@ -1,7 +1,7 @@
 from data_store import DELAY_DISTRIBUTION, DELAY_PERCENTAGE, INTERVALS
 from Entities.Part import Part
 import random
-from typing import List, Tuple
+from typing import Tuple
 
 
 def wait_time_from_triangle_distribution(distribution: Tuple[int, int, int]) -> int:
@@ -10,10 +10,13 @@ def wait_time_from_triangle_distribution(distribution: Tuple[int, int, int]) -> 
 
     params:
         distribution: Tuple of integer (min, mode, max) values
-    
+
     returns: integer that gives wait time for given distribution
     """
-    interval_to_wait = random.triangular(distribution)
+    min = distribution[0]
+    mode = distribution[1]
+    max = distribution[2]
+    interval_to_wait = random.triangular(low=min, mode=mode, high=max)
     return int(interval_to_wait)
 
 
@@ -27,7 +30,7 @@ def wait(start_time: int, wait_interval: int):
     raise NotImplementedError
 
 
-def is_delay(part_types: List[str]) -> bool:
+def is_delay(part_type: str) -> Tuple[bool, int]:
     """
     For a given part type, returns if there will be delay.
 
@@ -36,20 +39,19 @@ def is_delay(part_types: List[str]) -> bool:
 
     returns: bool
     """
-    delays = []
-    for a_part_type in part_types:
-        delay_threshold = DELAY_PERCENTAGE.get(a_part_type)
-        if random.random() < delay_threshold:
-            delayed_by = wait_time_from_triangle_distribution(
-                distribution=DELAY_DISTRIBUTION.get(a_part_type)
-                )
-            delays.append((True, delayed_by))
-        else:
-            delays.append(False, 0)
-    return delays
+    delay_threshold = DELAY_PERCENTAGE.get(part_type)
+    if random.random() < delay_threshold:
+        delayed_by = wait_time_from_triangle_distribution(
+            distribution=DELAY_DISTRIBUTION.get(part_type)
+            )
+        flag = True
+    else:
+        delayed_by = 0
+        flag = False
+    return flag, delayed_by
 
 
-def get_part(part_type: str):
+def get_part(part_type: str) -> Part:
     return Part(
         part_type=part_type,
         arrival_time_interval=INTERVALS.get(part_type),

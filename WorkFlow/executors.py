@@ -1,6 +1,7 @@
 from data_store import INTERVALS
 from Entities.Part import Part
 from EntityManagers import PalletManager, PartGenerators
+from Trackers.CostTracker import LostCost
 
 
 def run_system(duration: int = 1):
@@ -20,7 +21,7 @@ def run_system(duration: int = 1):
         interval_B=INTERVALS.get("B"),
         interval_C=INTERVALS.get("C")
     )
-
+    cost = LostCost()
     while duration_in_seconds >= 0:
         
         duration_in_seconds -= 1
