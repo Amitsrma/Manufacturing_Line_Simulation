@@ -10,7 +10,7 @@ Following is the class diagram showing interactions amontg the entities.
 
 # To Run
 Set PYTHONPATH to project folder.
-PowerShell: $env=PYTHONPATH:'list;of;paths'
+PowerShell: $env:PYTHONPATH='list;of;paths'
 Command Prompt: set PYTHONPATH=%PYTHONPATH%;list;of;paths
 
 Install requirements.txt and activate venv

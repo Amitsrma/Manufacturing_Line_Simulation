@@ -1,8 +1,6 @@
 from typing import List
 from WorkFlow.helpers import is_delay, get_part
-from data_store import DELAY_PERCENTAGE
 from Entities.Part import Part
-from data_store import ALLOWED_KEYS
 
 
 class PartGenerator:

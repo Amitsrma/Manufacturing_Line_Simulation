@@ -1,3 +1,4 @@
+from unittest.case import expectedFailure
 from EntityManagers.PartGenerators import PartGenerator
 from WorkFlow.helpers import get_part
 import unittest
@@ -15,7 +16,8 @@ class TestPartGenerator(unittest.TestCase):
         part_generator = PartGenerator(part_A, part_B, part_C)
         current_time = 90
         produced_parts = part_generator.get_parts(current_time)
-        self.assertEqual(produced_parts, [])
+        expected_parts = [part_A, part_B, part_C]
+        self.assertEqual(produced_parts, expected_parts)
 
 
 if __name__ == "__main__":
