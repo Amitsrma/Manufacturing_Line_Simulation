@@ -28,13 +28,12 @@ class PartGenerator:
         generated_parts = []
         for index, a_part_type in enumerate(self.parts):
             part_release_point = self.__last_release_time_point[0] + self.intervals[index]
-            if not self.__delays[index][0]:  # delay has not occured
-                self.__delays[index] = is_delay(part_type=a_part_type)
             part_release_point += self.__delays[index][1]
             if part_release_point >= current_time:
                 self.__last_release_time_point[0] = part_release_point
-                self.__delays[index] = (False, 0)
                 generated_parts.append(get_part(a_part_type))
+                # will there be delay in next release sequence for this part
+                self.__delays[index] = is_delay(a_part_type)
             else:
                 generated_parts.append(None)
         return generated_parts

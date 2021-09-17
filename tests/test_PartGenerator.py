@@ -19,6 +19,10 @@ class TestPartGenerator(unittest.TestCase):
         expected_parts = [part_A, part_B, part_C]
         self.assertEqual(produced_parts, expected_parts)
 
+    @patch("WorkFlow.helpers.random.random")
+    def test_get_parts_only_part_B(self, mock_random):
+        mock_random.return_value = 0.019
+
 
 if __name__ == "__main__":
     unittest.main()

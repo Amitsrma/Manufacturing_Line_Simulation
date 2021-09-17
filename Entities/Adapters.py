@@ -12,6 +12,6 @@ class LinePartReleaseQueue(Part, Line):
 
     def add_part(self, part_to_add: Part) -> None:
         self.fifo_part_queue.append(part_to_add)
-    
+
     def get_part(self) -> Part:
         return self.fifo_part_queue.popleft()

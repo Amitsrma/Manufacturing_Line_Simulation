@@ -23,6 +23,6 @@ def run_system(duration: int = 1):
     )
     cost = LostCost()
     while duration_in_seconds >= 0:
-        
+
         duration_in_seconds -= 1
     raise NotImplementedError
