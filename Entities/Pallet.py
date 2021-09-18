@@ -19,5 +19,8 @@ class Pallet:
     def get_used_pallet_ids(self) -> Set:
         return self.__existing_pallet_ids
 
+    def move(self) -> None:
+        return None
+
     def __repr__(self) -> str:
         return f"Pallet: {self.id}"

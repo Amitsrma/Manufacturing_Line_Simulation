@@ -46,6 +46,9 @@ LOST_COST_OF_PART = {
     "C": 0.72
 }
 
+# Capacity of space for parts in between
+SPACE_CAP = 8
+
 # Automated cells setup times in seconds
 WORKCELL_SETUP_TIMES = {
     1: {"A": 25, "B": 20, "C": 17},

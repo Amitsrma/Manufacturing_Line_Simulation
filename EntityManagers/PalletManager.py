@@ -20,4 +20,3 @@ class PalletManager:
     def add_to_free_pallet_queue(self, free_pallet: Pallet) -> None:
         self.num_free_pallets += 1
         self.free_pallet_queue.append(free_pallet)
-
