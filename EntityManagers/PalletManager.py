@@ -1,3 +1,4 @@
+from Entities.Part import Part
 from collections import deque
 from Entities.Pallet import Pallet
 
@@ -9,9 +10,12 @@ class PalletManager:
     def __init__(self, total_pallets: int):
         self.total_pallets = total_pallets
         self.num_free_pallets = 0
-        self.free_pallet_queue = deque()
+        self.free_pallet_queue = deque([Pallet(i) for i in range(total_pallets)])
+        self.used_pallets = deque(maxlen=total_pallets)
 
-    def get_an_available_pallet(self) -> Pallet:
+    def get_an_available_pallet(self) -> Pallet or bool:
+        if self.num_free_pallets == 0:
+            return False
         self.num_free_pallets -= 1
         return self.free_pallet_queue.popleft()
 

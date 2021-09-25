@@ -1,3 +1,27 @@
+# Allowed keys for part generator
+ALLOWED_KEYS = ["interval_A", "interval_B", "interval_C"]
+
+# Percentage of times Delays happen
+DELAY_PERCENTAGE = {
+    "A": 2/100,
+    "B": 1.75/100,
+    "C": 0.5/100
+}
+
+# Triangular distribution of delay, in seconds
+DELAY_DISTRIBUTION = {
+    "A": (5, 15, 60),
+    "B": (5, 20, 55),
+    "C": (5, 20, 65)
+}
+
+# Intervals for different parts, in seconds
+INTERVALS = {
+    "A": 2.8 * 60,
+    "B": 1.4 * 60,
+    "C": 2.0 * 60
+}
+
 # Manual cell numbers
 MANUAL_CELLS = (2, 7)
 
@@ -21,6 +45,9 @@ LOST_COST_OF_PART = {
     "B": 0.63,
     "C": 0.72
 }
+
+# Capacity of space for parts in between
+SPACE_CAP = 8
 
 # Automated cells setup times in seconds
 WORKCELL_SETUP_TIMES = {
