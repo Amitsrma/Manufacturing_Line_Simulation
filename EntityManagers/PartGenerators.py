@@ -14,7 +14,7 @@ class PartGenerator:
     """
     def __init__(self, part_A: Part,
                  part_B: Part, part_C: Part):
-        self.parts = ["A", "B", "C"]
+        self.parts = ["B", "C", "A"]  # in order of earliest release
         self.intervals = [
             part_A.arrival_time_interval * 60,
             part_B.arrival_time_interval * 60,
@@ -34,6 +34,4 @@ class PartGenerator:
                 generated_parts.append(get_part(a_part_type))
                 # will there be delay in next release sequence for this part
                 self.__delays[index] = is_delay(a_part_type)
-            else:
-                generated_parts.append(None)
         return generated_parts
