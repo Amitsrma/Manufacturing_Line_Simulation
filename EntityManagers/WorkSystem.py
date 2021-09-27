@@ -1,16 +1,16 @@
-from Entities.WorkCell import Workcell
+from EntityManagers.WorkCellManager import WorkCellManager
+from Entities.BetweenWorkcell import Space
 from EntityManagers.PalletManager import PalletManager
 
 
 class TheSystem:
     def __init__(self, num_workcells: int, num_pallets: int):
-        self.workcells = [Workcell(i) for i in range(1, num_workcells+1)]
+        self.workcell_manager = WorkCellManager(num_workcells=num_workcells)
         self.pallet_manager = PalletManager(total_pallets=num_pallets)
+        # Add Space Manager
 
     def can_part_enter(self):
-        if not self.workcells[7].is_processing:
-            return True
-        return False
+        return self.workcell_manager.can_part_enter(cell_id=7)
 
     def update(self, current_time: int) -> None:
         """
@@ -20,4 +20,5 @@ class TheSystem:
             PalletManager's state in the system.
             Space available in between the workcells.
         """
+        # TODO conveyor is always on with current implementation
         raise NotImplementedError
