@@ -10,6 +10,6 @@ class WorkCellManager:
         raise NotImplementedError("WorkCellManager update_cell_status()")
 
     def can_part_enter(self, cell_id: int) -> bool:
-        if 0 < cell_id > self._num_workcells:
+        if cell_id < 0 or self._num_workcells < cell_id:
             raise ValueError("cell_id does not exist!")
         return not self.workcells[cell_id].is_processing

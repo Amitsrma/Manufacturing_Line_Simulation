@@ -23,8 +23,10 @@ class Line:
             part_queue: Object whose entries will be updated as we move on
         """
         while self.num_current_parts < self.capacity:
-            self.num_current_parts += 1
-            self.parts_queue.append(part_queue.get_part())
+            fifo_part = part_queue.get_part()
+            if fifo_part is not None:
+                self.num_current_parts += 1
+                self.parts_queue.append(part_queue.get_part())
 
     def is_full(self) -> bool:
         return self.num_current_parts < self.capacity

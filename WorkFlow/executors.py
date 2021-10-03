@@ -1,9 +1,11 @@
+from logging import Logger
 from data_store import INTERVALS
 from Entities.Part import Part
 from Entities.ConveyorLine import Line
 from EntityManagers.WorkSystem import TheSystem
 from EntityManagers.PartGenerators import PartGenerator
 from EntityManagers.PartQueue import PartQueue
+from event_logger import LOGGER
 from Trackers.CostTracker import LostCost
 from WorkFlow.helpers import get_part
 
@@ -34,15 +36,16 @@ def run_system(duration: int = 1, num_workcells: int = 8,
 
     while duration_in_seconds >= 0:
         generated_parts = part_generator.get_parts(duration_in_seconds)
-        # Log generated parts
+        if len(generated_parts) > 0:
+            LOGGER.info(f"{duration_in_seconds}: Parts Generated - {generated_parts}")
         if not input_line.is_full():
             queue_to_input_line.add_parts(generated_parts)
             input_line.add_parts(part_queue=queue_to_input_line)
         # if input_line is full, stop part generation until space is available
         else:
-            # Log lost parts
+            LOGGER.info(f"{duration_in_seconds}: Lost Parts - {generated_parts}")
             cost.update_lost_part(generated_parts)
-            # Log lost cost to this point in time
+            LOGGER.info(f"Lost Cost: {cost.total_cost}")
         if system.can_part_enter():
             raise NotImplementedError("TheSystem logics to be added!")
         duration_in_seconds -= 1

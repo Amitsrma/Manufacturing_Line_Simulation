@@ -21,4 +21,4 @@ class TheSystem:
             Space available in between the workcells.
         """
         # TODO conveyor is always on with current implementation
-        raise NotImplementedError
+        raise NotImplementedError("Update system state!")
