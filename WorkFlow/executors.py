@@ -34,21 +34,22 @@ def run_system(duration: int = 1, num_workcells: int = 8,
     input_line = Line(name="Input Conveyor", capacity=input_conveyor_cap)
     queue_to_input_line = PartQueue()
 
-    while duration_in_seconds >= 0:
+    current_time = 0
+    while current_time < duration_in_seconds:
         generated_parts = part_generator.get_parts(duration_in_seconds)
         if len(generated_parts) > 0:
-            LOGGER.info(f"{duration_in_seconds}: Parts Generated - {generated_parts}")
+            LOGGER.info(f"{current_time}: Parts Generated - {generated_parts}")
         if not input_line.is_full():
             queue_to_input_line.add_parts(generated_parts)
             input_line.add_parts(part_queue=queue_to_input_line)
         # if input_line is full, stop part generation until space is available
         else:
-            LOGGER.info(f"{duration_in_seconds}: Lost Parts - {generated_parts}")
+            LOGGER.info(f"{current_time}: Lost Parts - {generated_parts}")
             cost.update_lost_part(generated_parts)
             LOGGER.info(f"Lost Cost: {cost.total_cost}")
         if system.can_part_enter():
             raise NotImplementedError("TheSystem logics to be added!")
-        duration_in_seconds -= 1
+        current_time += 1
         raise NotImplementedError
 
 

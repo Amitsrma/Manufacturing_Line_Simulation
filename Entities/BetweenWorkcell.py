@@ -15,3 +15,11 @@ class Space:
 
     def place_pallet(self, a_pallet: Pallet) -> Pallet:
         self.pallets_waiting.append(a_pallet)
+
+
+class SpaceManager:
+    def __init__(self, num_gaps: int):
+        self.spaces = [Space(id=index) for index in range(num_gaps)]
+
+    def can_part_enter(self, id: int):
+        return self.spaces[id].can_pallet_enter()

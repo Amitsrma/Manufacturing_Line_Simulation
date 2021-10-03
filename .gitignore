@@ -141,3 +141,4 @@ cython_debug/
 Prob_State/
 .VSCodeCounter/
 .vscode/
+event_logs

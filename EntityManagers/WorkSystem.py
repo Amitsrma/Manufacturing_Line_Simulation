@@ -1,5 +1,5 @@
 from EntityManagers.WorkCellManager import WorkCellManager
-from Entities.BetweenWorkcell import Space
+from Entities.BetweenWorkcell import SpaceManager
 from EntityManagers.PalletManager import PalletManager
 
 
@@ -7,7 +7,7 @@ class TheSystem:
     def __init__(self, num_workcells: int, num_pallets: int):
         self.workcell_manager = WorkCellManager(num_workcells=num_workcells)
         self.pallet_manager = PalletManager(total_pallets=num_pallets)
-        # Add Space Manager
+        self.space_manager = SpaceManager(num_gaps=num_workcells)
 
     def can_part_enter(self):
         return self.workcell_manager.can_part_enter(cell_id=7)
