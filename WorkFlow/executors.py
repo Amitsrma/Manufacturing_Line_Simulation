@@ -4,7 +4,7 @@ from Entities.Part import Part
 from Entities.ConveyorLine import Line
 from EntityManagers.WorkSystem import TheSystem
 from EntityManagers.PartGenerators import PartGenerator
-from EntityManagers.PartQueue import PartQueue
+from EntityManagers.Queues import PartQueue
 from event_logger import LOGGER
 from Trackers.CostTracker import LostCost
 from WorkFlow.helpers import get_part

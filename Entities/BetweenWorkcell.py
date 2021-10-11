@@ -21,5 +21,5 @@ class SpaceManager:
     def __init__(self, num_gaps: int):
         self.spaces = [Space(id=index) for index in range(num_gaps)]
 
-    def can_part_enter(self, id: int):
+    def can_part_enter(self, id: int) -> bool:
         return self.spaces[id].can_pallet_enter()

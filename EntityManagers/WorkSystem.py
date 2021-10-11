@@ -9,7 +9,7 @@ class TheSystem:
         self.pallet_manager = PalletManager(total_pallets=num_pallets)
         self.space_manager = SpaceManager(num_gaps=num_workcells)
 
-    def can_part_enter(self):
+    def can_part_enter(self) -> bool:
         return self.workcell_manager.can_part_enter(cell_id=7)
 
     def update(self, current_time: int) -> None:
@@ -21,4 +21,5 @@ class TheSystem:
             Space available in between the workcells.
         """
         # TODO conveyor is always on with current implementation
+
         raise NotImplementedError("Update system state!")

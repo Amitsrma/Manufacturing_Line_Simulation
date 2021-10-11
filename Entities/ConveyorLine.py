@@ -1,4 +1,4 @@
-from EntityManagers.PartQueue import PartQueue
+from EntityManagers.Queues import PartQueue
 from collections import deque
 from Entities.Part import Part
 
