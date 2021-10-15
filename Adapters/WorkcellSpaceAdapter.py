@@ -16,11 +16,12 @@ This will capture interaction between WorkCell_i and SPi, SPi-1
 """
 from Entities.WorkCell import Workcell
 from Entities.BetweenWorkcell import Space
+from Entities.BetweenWorkcell import SpaceManager
 
 
 # TODO find out if Space or SpaceManager is better used here
 # Space alone won't allow sharing same Space over multiple cells
 # if we use one Adapter per Workcell
 class WorkcellSpaceAdapter(Space, Workcell):
-    def __init__(self, cell_number: int, ):
-        Space.__init__(self, cell_number)
+    def __init__(self, cell_number: int, space_manager: SpaceManager):
+        Workcell.__init__(self, cell_number)

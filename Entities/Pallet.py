@@ -11,10 +11,10 @@ class Pallet:
         self.__existing_pallet_ids.add(id)
         self.id = id
         self.is_free = True
-        self.assigned_part = None
+        self.current_part = None
 
     def assign_part(self, assigned_part: Part) -> None:
-        self.assigned_part = assigned_part
+        self.current_part = assigned_part
 
     def get_used_pallet_ids(self) -> Set:
         return self.__existing_pallet_ids

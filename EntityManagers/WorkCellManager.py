@@ -6,7 +6,7 @@ class WorkCellManager:
         self.workcells = [Workcell(i) for i in range(1, num_workcells + 1)]
         self._num_workcells = num_workcells
 
-    def update_cell_states(self) -> None:
+    def update_cell_states(self, current_time: int) -> None:
         raise NotImplementedError("WorkCellManager update_cell_status()")
 
     def can_part_enter(self, cell_id: int) -> bool:
