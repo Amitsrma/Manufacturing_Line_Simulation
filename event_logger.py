@@ -10,7 +10,7 @@ def create_logger():
     log = logging.getLogger(LOGGER_NAME)
     log.setLevel(logging.INFO)
     rotating_fhandler = logging.handlers.RotatingFileHandler(
-        filename=LOG_FILE_NAME, maxBytes=1024*1024
+        filename=LOG_FILE_NAME, maxBytes=1024*1024, backupCount=5
     )
     formatter = logging.Formatter("%(name)s - %(levelname)s : %(message)s")
     rotating_fhandler.setFormatter(formatter)
